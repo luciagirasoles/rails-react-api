@@ -2,7 +2,12 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login, only: :create
 
-  api :POST, '/login', 'Log in as user'
+  api :POST, '/login', <<-DESC
+    Log in as user.
+    This action also set a cookie with a valid token in the response
+    So, you need to send the credentials of the browser
+  DESC
+
   param :email, String, desc: 'user email', required: true
   param :password, String, desc: 'user passwond', required: true
 

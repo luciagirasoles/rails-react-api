@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To install this app, you should run:
 
-Things you may want to cover:
+`$ bundle install`
 
-* Ruby version
+`$ rails db:create`
 
-* System dependencies
+`$ rails db:migrate`
 
-* Configuration
+If you want seed data, you should edit `db/seeds.rb` file.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To see the API documentation, first run `rails server` and go to `http://localhost:3000/apipie`
