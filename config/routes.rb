@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  # sessions routes
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  scope '/api' do
+    # sessions routes
+    post '/login', to: 'sessions#create'
+    delete '/logout', to: 'sessions#destroy'
 
-  resources :restaurants, only: %I[index show]
-  resources :orders, only: %I[index show create update]
+    resources :restaurants, only: %I[index show]
+    resources :orders, only: %I[index show create update]
+  end
 end
