@@ -6,6 +6,6 @@ class RestaurantsController < ApplicationController
 
   def show
     restaurant = Restaurant.find(params[:id])
-    render json: restaurant
+    render json: restaurant, scope: { action: :show }
   end
 end
