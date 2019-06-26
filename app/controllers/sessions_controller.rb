@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     property :email, String, desc: 'Email of the logged in user'
   end
 
-  returns code: :bad_request, desc: 'Unauthorized request' do
+  returns code: :bad_request, desc: 'Bad request' do
     property :errors, Hash, desc: 'Incorrect email or password'
   end
   def create

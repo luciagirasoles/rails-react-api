@@ -83,20 +83,22 @@ class OrdersController < ApplicationController
   param :id, :number, desc: 'Id of the order'
   returns code: :ok, desc: 'Details of order' do
     param_group :order
-    property :order_items, array_of: Hash do
+    property :order_items, Array do
       param_group :order_item
     end
   end
 
-  returns code: :unauthorized, desc: 'Required login or is not an order of the current user' do
+  returns code: :unauthorized, desc: 'Required login' do
     property :errors, Hash, desc: 'Access denied'
   end
+
+  returns code: :forbidden, desc: 'When the requested order is not an order of the current user'
   def show
     order = Order.find(params[:id])
     if order.user == current_user
       render json: order, scope: { include_order_items: true }
     else
-      render_unauthorized('Access denied')
+      head :forbidden
     end
   end
 
@@ -110,7 +112,7 @@ class OrdersController < ApplicationController
 
   returns code: :ok, desc: 'Details of order' do
     param_group :order
-    property :order_items, array_of: Hash do
+    property :order_items, Array do
       param_group :order_item
     end
   end
@@ -139,21 +141,23 @@ class OrdersController < ApplicationController
 
   returns code: :ok, desc: 'Details of order' do
     param_group :order
-    property :order_items, array_of: Hash do
+    property :order_items, Array do
       param_group :order_item
     end
   end
 
-  returns code: :unauthorized, desc: 'Required login or is not an order of the current user' do
+  returns code: :unauthorized, desc: 'Required login' do
     property :errors, Hash, desc: 'Access denied'
   end
+
+  returns code: :forbidden, desc: 'When the requested order is not an order of the current user'
   def update
     order = Order.find(params[:id])
     if order.user == current_user
       order.update(complete: true)
       render json: order
     else
-      render_unauthorized('Access denied')
+      head :forbidden
     end
   end
 

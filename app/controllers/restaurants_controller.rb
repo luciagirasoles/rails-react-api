@@ -79,7 +79,7 @@ class RestaurantsController < ApplicationController
 
   returns code: :ok, desc: 'List of restaurants' do
     param_group :restaurant
-    property :menu_items, array_of: Hash, desc: 'List of restaurant\'s menu items' do
+    property :menu_items, Array, desc: 'List of restaurant\'s menu items' do
       property :id, :number, desc: 'Id of menu item'
       property :name, String, desc: 'Name of menu item'
       property :description, String, desc: 'Description of menu item'
