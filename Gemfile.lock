@@ -47,6 +47,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    apipie-rails (0.5.16)
+      rails (>= 4.1)
     arel (9.0.0)
     bcrypt (3.1.12)
     bootsnap (1.4.4)
@@ -142,6 +144,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  apipie-rails
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   byebug

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  apipie
   scope '/api' do
     # sessions routes
     post '/login', to: 'sessions#create'
