@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   def show
     order = Order.find(params[:id])
     if order.user == current_user
-      render json: order, include: :order_items
+      render json: order, scope: { include_order_items: true }
     else
       render_unauthorized('Access denied')
     end
@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     order = Order.new(order_params)
     order.user = current_user
     if order.save
-      render json: order, include: :order_items
+      render json: order, scope: { include_order_items: true }
     else
       render json: order.errors.full_messages, status: :bad_request
     end
