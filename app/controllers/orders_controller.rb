@@ -30,8 +30,4 @@ class OrdersController < ApplicationController
       :restaurant_id, order_items_attributes: %I[menu_item_id quantity]
     )
   end
-
-  def current_user
-    User.first
-  end
 end
